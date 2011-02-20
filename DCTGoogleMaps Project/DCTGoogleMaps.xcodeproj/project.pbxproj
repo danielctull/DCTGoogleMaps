@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2430F2E61311DEB5001977C8 /* DCTGoogleMapsDirections.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2430F2E41311DEB5001977C8 /* DCTGoogleMapsDirections.xcdatamodeld */; };
 		2440D5CA1311D7DE00BC487D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2440D5C91311D7DE00BC487D /* UIKit.framework */; };
 		2440D5CC1311D7DE00BC487D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2440D5CB1311D7DE00BC487D /* Foundation.framework */; };
 		2440D5CE1311D7DE00BC487D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2440D5CD1311D7DE00BC487D /* CoreGraphics.framework */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2430F2E51311DEB5001977C8 /* DCTGoogleMapsDirections.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DCTGoogleMapsDirections.xcdatamodel; sourceTree = "<group>"; };
 		2440D5C51311D7DE00BC487D /* DCTGoogleMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCTGoogleMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2440D5C91311D7DE00BC487D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2440D5CB1311D7DE00BC487D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -173,6 +175,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2430F2E21311DEA3001977C8 /* Directions */ = {
+			isa = PBXGroup;
+			children = (
+				2430F2E41311DEB5001977C8 /* DCTGoogleMapsDirections.xcdatamodeld */,
+			);
+			path = Directions;
+			sourceTree = "<group>";
+		};
 		2440D5BA1311D7DE00BC487D = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +243,7 @@
 		2464EDCE1311D84B0050B13C /* DCTGoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
+				2430F2E21311DEA3001977C8 /* Directions */,
 				2464EF1F1311DAC00050B13C /* MKPolyline+DCTGoogleEncoding.h */,
 				2464EF201311DAC00050B13C /* MKPolyline+DCTGoogleEncoding.m */,
 			);
@@ -486,6 +497,7 @@
 				2464EF1D1311DA400050B13C /* NSObject+DCTKVOExtras.m in Sources */,
 				2464EF1E1311DA400050B13C /* NSObject+DCTPerformSelector.m in Sources */,
 				2464EF211311DAC00050B13C /* MKPolyline+DCTGoogleEncoding.m in Sources */,
+				2430F2E61311DEB5001977C8 /* DCTGoogleMapsDirections.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +606,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2430F2E41311DEB5001977C8 /* DCTGoogleMapsDirections.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2430F2E51311DEB5001977C8 /* DCTGoogleMapsDirections.xcdatamodel */,
+			);
+			currentVersion = 2430F2E51311DEB5001977C8 /* DCTGoogleMapsDirections.xcdatamodel */;
+			path = DCTGoogleMapsDirections.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2440D5BC1311D7DE00BC487D /* Project object */;
 }
