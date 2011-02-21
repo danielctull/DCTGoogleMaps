@@ -7,3 +7,6 @@
 [submodule "DCTConnectionController"]
 	path = DCTConnectionController
 	url = git://github.com/danielctull/DCTConnectionController.git
+[submodule "json-framework"]
+	path = json-framework
+	url = git://github.com/danielctull/json-framework.git
