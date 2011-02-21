@@ -9,14 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ;
 
 @interface DCTGoogleMapsDirection : NSManagedObject {
 @private
 }
+@property (nonatomic, retain) id startLocation;
 @property (nonatomic, retain) id endLocation;
 @property (nonatomic, retain) NSString * endString;
-@property (nonatomic, retain) id startLocation;
 @property (nonatomic, retain) NSString * startString;
 @property (nonatomic, retain) NSSet* routes;
 

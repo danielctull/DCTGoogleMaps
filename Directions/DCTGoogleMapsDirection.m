@@ -7,17 +7,16 @@
 //
 
 #import "DCTGoogleMapsDirection.h"
-#import ".h"
 
 
 @implementation DCTGoogleMapsDirection
+@dynamic startLocation;
 @dynamic endLocation;
 @dynamic endString;
-@dynamic startLocation;
 @dynamic startString;
 @dynamic routes;
 
-- (void)addRoutesObject:( *)value {    
+- (void)addRoutesObject:(NSManagedObject *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"routes" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"routes"] addObject:value];
@@ -25,7 +24,7 @@
     [changedObjects release];
 }
 
-- (void)removeRoutesObject:( *)value {
+- (void)removeRoutesObject:(NSManagedObject *)value {
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"routes" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"routes"] removeObject:value];

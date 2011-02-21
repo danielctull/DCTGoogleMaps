@@ -9,23 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ;
+@class DCTGoogleMapsLeg, DCTGoogleMapsRoute, DCTGoogleMapsStep;
 
 @interface DCTGoogleMapsLeg : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) NSNumber * distance;
+@property (nonatomic, retain) NSString * durationString;
 @property (nonatomic, retain) NSString * distanceString;
+@property (nonatomic, retain) id endLocation;
+@property (nonatomic, retain) NSString * endAddress;
+@property (nonatomic, retain) id startLocation;
 @property (nonatomic, retain) NSNumber * dctOrderedObjectIndex;
 @property (nonatomic, retain) NSNumber * duration;
-@property (nonatomic, retain) NSString * durationString;
-@property (nonatomic, retain) NSString * endAddress;
-@property (nonatomic, retain) id endLocation;
 @property (nonatomic, retain) NSString * startAddress;
-@property (nonatomic, retain) id startLocation;
-@property (nonatomic, retain)  * dctNextOrderedObject;
-@property (nonatomic, retain)  * dctPreviousOrderedObject;
-@property (nonatomic, retain)  * route;
+@property (nonatomic, retain) NSNumber * distance;
+@property (nonatomic, retain) DCTGoogleMapsLeg * dctPreviousOrderedObject;
+@property (nonatomic, retain) DCTGoogleMapsLeg * dctNextOrderedObject;
+@property (nonatomic, retain) DCTGoogleMapsRoute * route;
 @property (nonatomic, retain) NSSet* steps;
 
 @end

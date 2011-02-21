@@ -7,28 +7,30 @@
 //
 
 #import "DCTGoogleMapsLeg.h"
-#import ".h"
+#import "DCTGoogleMapsLeg.h"
+#import "DCTGoogleMapsRoute.h"
+#import "DCTGoogleMapsStep.h"
 
 
 @implementation DCTGoogleMapsLeg
-@dynamic distance;
+@dynamic durationString;
 @dynamic distanceString;
+@dynamic endLocation;
+@dynamic endAddress;
+@dynamic startLocation;
 @dynamic dctOrderedObjectIndex;
 @dynamic duration;
-@dynamic durationString;
-@dynamic endAddress;
-@dynamic endLocation;
 @dynamic startAddress;
-@dynamic startLocation;
-@dynamic dctNextOrderedObject;
+@dynamic distance;
 @dynamic dctPreviousOrderedObject;
+@dynamic dctNextOrderedObject;
 @dynamic route;
 @dynamic steps;
 
 
 
 
-- (void)addStepsObject:( *)value {    
+- (void)addStepsObject:(DCTGoogleMapsStep *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"steps" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"steps"] addObject:value];
@@ -36,7 +38,7 @@
     [changedObjects release];
 }
 
-- (void)removeStepsObject:( *)value {
+- (void)removeStepsObject:(DCTGoogleMapsStep *)value {
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"steps" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"steps"] removeObject:value];

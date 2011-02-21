@@ -7,7 +7,7 @@
 //
 
 #import "DCTGoogleMapsRoute.h"
-#import ".h"
+#import "DCTGoogleMapsDirection.h"
 
 
 @implementation DCTGoogleMapsRoute
@@ -18,7 +18,7 @@
 @dynamic legs;
 
 
-- (void)addLegsObject:( *)value {    
+- (void)addLegsObject:(NSManagedObject *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"legs" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"legs"] addObject:value];
@@ -26,7 +26,7 @@
     [changedObjects release];
 }
 
-- (void)removeLegsObject:( *)value {
+- (void)removeLegsObject:(NSManagedObject *)value {
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"legs" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"legs"] removeObject:value];

@@ -7,21 +7,21 @@
 //
 
 #import "DCTGoogleMapsStep.h"
-#import ".h"
+#import "DCTGoogleMapsStep.h"
 
 
 @implementation DCTGoogleMapsStep
-@dynamic distance;
+@dynamic durationString;
 @dynamic distanceString;
+@dynamic endLocation;
+@dynamic startLocation;
+@dynamic polylineString;
 @dynamic dctOrderedObjectIndex;
 @dynamic duration;
-@dynamic durationString;
-@dynamic endLocation;
+@dynamic distance;
 @dynamic instructions;
-@dynamic polylineString;
-@dynamic startLocation;
-@dynamic dctNextOrderedObject;
 @dynamic dctPreviousOrderedObject;
+@dynamic dctNextOrderedObject;
 @dynamic leg;
 
 
