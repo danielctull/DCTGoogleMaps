@@ -21,11 +21,11 @@
 }
 
 - (void)dctInternal_geocode {
-	
 	DCTGoogleMapsGeocodingConnectionController *cc = [DCTGoogleMapsGeocodingConnectionController connectionController];
-	
 	cc.location = self.location;
 	cc.address = self.address;
+	cc.managedObjectContext = [self managedObjectContext];
+	[cc connect];
 }
 
 - (BOOL)dct_setSerializedValue:(id)value forKey:(NSString *)key {
