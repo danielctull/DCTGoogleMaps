@@ -1,5 +1,5 @@
 //
-//  MKPolyline+DTGoogleCodedLines.m
+//  MKPolyline+DCTGoogleEncoding.m
 //  DCTGoogleMaps
 //
 //  Created by Daniel Tull on 13.07.2010.

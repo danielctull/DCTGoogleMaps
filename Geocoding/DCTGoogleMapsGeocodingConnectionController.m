@@ -13,18 +13,14 @@
 
 @implementation DCTGoogleMapsGeocodingConnectionController
 
-@synthesize managedObjectContext, address, bounds, region, language, location;
+@synthesize address, bounds, region, language, location;
 
-- (NSURL *)URL {
-	return [NSURL URLWithString:@"http://maps.google.com/maps/api/geocode/json"];
+- (NSString *)baseURLString {
+	return @"http://maps.google.com/maps/api/geocode/json";
 }
 
 + (NSArray *)queryProperties {
-	return [NSArray arrayWithObjects:@"address", @"bounds", @"region", @"language", @"sensor", @"latlng", nil];
-}
-
-- (NSString *)sensor {
-	return @"true";
+	return [NSArray arrayWithObjects:@"address", @"bounds", @"region", @"language", @"latlng", nil];
 }
 
 - (NSString *)latlng {

@@ -16,6 +16,8 @@
 
 @implementation DCTGoogleMapsPlace (Implementation)
 
+
+
 - (NSString *)address {
 	return [NSString stringWithFormat:@"%@, %@", self.postcode, self.country];
 }
