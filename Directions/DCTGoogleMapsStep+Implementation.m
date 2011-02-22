@@ -20,20 +20,6 @@ NSString *const DCTGoogleMapsStepAttributePolylineString = @"polylineString";
 NSString *const DCTGoogleMapsStepAttributeStartCoordinate = @"startCoordinate";
 NSString *const DCTGoogleMapsStepRelationshipLeg = @"leg";
 
-extern NSString *const DCTGoogleMapsAPICopyrightsKey;
-extern NSString *const DCTGoogleMapsAPIDistanceKey;
-extern NSString *const DCTGoogleMapsAPIDurationKey;
-extern NSString *const DCTGoogleMapsAPIValueKey;
-extern NSString *const DCTGoogleMapsAPITextKey;
-extern NSString *const DCTGoogleMapsAPIPolylineKey;
-extern NSString *const DCTGoogleMapsAPIOverviewPolylineKey;
-extern NSString *const DCTGoogleMapsAPILatitudeKey;
-extern NSString *const DCTGoogleMapsAPILongitudeKey;
-extern NSString *const DCTGoogleMapsAPIStartLocationKey;
-extern NSString *const DCTGoogleMapsAPIEndLocationKey;
-extern NSString *const DCTGoogleMapsAPIStartAddressKey;
-extern NSString *const DCTGoogleMapsAPIEndAddressKey;
-
 @implementation DCTGoogleMapsStep (Implementation)
 
 + (NSDictionary *)dct_mappingFromRemoteNamesToLocalNames {
