@@ -10,5 +10,5 @@
 
 
 @implementation DCTGoogleMapsLeg (Implementation)
-
+@dynamic dctOrderedObjectIndex;
 @end

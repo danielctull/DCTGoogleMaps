@@ -8,7 +8,8 @@
 
 #import "DCTGoogleMapsStep.h"
 #import "NSManagedObject+DCTAutomatedSetup.h"
+#import "NSManagedObject+DCTOrdering.h"
 
-@interface DCTGoogleMapsStep (Implementation) <DCTManagedObjectAutomatedSetup>
+@interface DCTGoogleMapsStep (Implementation) <DCTManagedObjectAutomatedSetup, DCTOrderedObject>
 
 @end

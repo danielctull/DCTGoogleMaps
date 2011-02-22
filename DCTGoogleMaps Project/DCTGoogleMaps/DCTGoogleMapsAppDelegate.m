@@ -7,14 +7,79 @@
 //
 
 #import "DCTGoogleMapsAppDelegate.h"
+#import <CoreData/CoreData.h>
+
+#import "DCTGoogleMapsDirectionsConnectionController.h"
+#import "DCTGoogleMapsGeocodingConnectionController.h"
+
+#import "DCTGoogleMapsDirection.h"
+#import "DCTGoogleMapsStep.h"
+#import "DCTGoogleMapsLeg.h"
+#import "DCTGoogleMapsRoute.h"
+#import "DCTGoogleMapsPlace.h"
+
+@interface DCTGoogleMapsAppDelegate ()
+@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
+@end
 
 @implementation DCTGoogleMapsAppDelegate
 
 
 @synthesize window=_window;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+	DCTGoogleMapsDirectionsConnectionController *cc = [DCTGoogleMapsDirectionsConnectionController connectionController];
+	cc.managedObjectContext = self.managedObjectContext;
+	cc.startString = @"W1N";
+	cc.endString = @"F4IL";
+	
+	[cc addCompletionBlock:^ (NSObject *object) {
+		
+		DCTGoogleMapsDirection *d = (DCTGoogleMapsDirection *)object;
+		
+		NSLog(@"%@", d);
+		
+		for (DCTGoogleMapsRoute *r in d.routes) {
+			
+			NSLog(@"%@", r);
+			
+			for (DCTGoogleMapsLeg *l in r.legs) {
+				
+				NSLog(@"%@", l);
+				
+				for (DCTGoogleMapsStep *s in l.steps) {
+					NSLog(@"%@", s);
+				}
+			}
+		}
+	}];
+	
+	[cc addFailureBlock:^ (NSError *error) {
+		
+		
+		
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error domain]
+															message:[error localizedDescription]
+														   delegate:nil
+												  cancelButtonTitle:@"OK"
+												  otherButtonTitles:nil];
+		[alertView show];
+		[alertView release];
+	}];
+	[cc connect];
+	
+	
+	DCTGoogleMapsGeocodingConnectionController *cc2 = [DCTGoogleMapsGeocodingConnectionController connectionController];
+	cc2.managedObjectContext = self.managedObjectContext;
+	cc2.address = @"51 - 53 Great Marlborough Street, London, W1F 7JT";
+	
+	[cc addCompletionBlock:^ (NSObject *object) {
+		NSLog(@"%@", object);
+	}];
+	
+	[cc2 connect];
+	
 	// Override point for customization after application launch.
 	[self.window makeKeyAndVisible];
     return YES;
@@ -63,6 +128,24 @@
 {
 	[_window release];
     [super dealloc];
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+	
+	NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles: nil];
+	NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
+	
+    [persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType
+											 configuration:nil
+													   URL:nil
+												   options:nil 
+													 error:NULL];
+	
+	NSManagedObjectContext *managedObjectContext = [[NSManagedObjectContext alloc] init];
+    [managedObjectContext setPersistentStoreCoordinator:persistentStoreCoordinator];
+	[persistentStoreCoordinator release];
+	
+	return [managedObjectContext autorelease];	
 }
 
 @end

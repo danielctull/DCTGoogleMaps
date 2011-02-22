@@ -49,7 +49,7 @@ NSString *const DCTGoogleMapsAddressComponents = @"address_components";
 @synthesize managedObjectContext;
 
 - (NSString *)baseURLString {
-	return @"http://maps.google.com/maps/";
+	return @"http://maps.google.com/maps/api";
 }
 
 + (NSArray *)queryProperties {

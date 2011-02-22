@@ -22,6 +22,8 @@ NSString *const DCTGoogleMapsStepRelationshipLeg = @"leg";
 
 @implementation DCTGoogleMapsStep (Implementation)
 
+@dynamic dctOrderedObjectIndex;
+
 + (NSDictionary *)dct_mappingFromRemoteNamesToLocalNames {
 	NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
 	[dict setValue:DCTGoogleMapsStepAttributeInstructions forKey:DCTGoogleMapsInstructions];

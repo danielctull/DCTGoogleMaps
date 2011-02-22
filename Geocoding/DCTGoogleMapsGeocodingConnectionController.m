@@ -35,7 +35,7 @@
 	
 	NSData *data = (NSData *)object;
 	
-	NSString *dataString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	
 	SBJsonParser *jsonParser = [SBJsonParser new];
 	
@@ -43,12 +43,12 @@
 	NSDictionary *dict = [jsonParser objectWithString:dataString error:&err];
 	
 	NSLog(@"%@:%@ %@", self, NSStringFromSelector(_cmd), dict);
-	
+	[dataString release];
 	[jsonParser release];
 	
 	NSArray *results = [dict objectForKey:@"results"];
 	
-	NSMutableArray *returnResults = [[NSMutableArray alloc] initWithCapacity:[results count]];
+	NSMutableArray *returnResults = [NSMutableArray arrayWithCapacity:[results count]];
 	
 	NSManagedObjectContext *context = self.managedObjectContext;
 	

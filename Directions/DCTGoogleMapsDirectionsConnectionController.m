@@ -11,6 +11,13 @@
 #import "JSON.h"
 #import "MKPolyline+DCTGoogleEncoding.h"
 #import "DCTGoogleMapsDirection+Implementation.h"
+#import "NSError+DCTExtensions.h"
+
+@interface DCTGoogleMapsDirectionsConnectionController ()
+@property (nonatomic, readonly) NSString *origin;
+@property (nonatomic, readonly) NSString *destination;
+@end
+
 
 @implementation DCTGoogleMapsDirectionsConnectionController
 @synthesize startString, endString, startLocation, endLocation;
@@ -53,12 +60,36 @@
 	
 	NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	
-	SBJsonParser *jsonParser = [SBJsonParser new];
+	NSLog(@"%@:%@ %@", self, NSStringFromSelector(_cmd), jsonString);
+	
+	SBJsonParser *jsonParser = [[SBJsonParser alloc] init];
 	NSError *err = nil;
 	NSDictionary *dictionary = [jsonParser objectWithString:jsonString error:&err];
 	
-	if ([[dictionary objectForKey:DCTGoogleMapsStatus] isEqualToString:DCTGoogleMapsStatusZeroResults]) 
-		return [super receivedObject:object];
+	[jsonString release];
+	[jsonParser release];
+	
+	NSLog(@"%@:%@ %@", self, NSStringFromSelector(_cmd), dictionary);
+	
+	if ([[dictionary objectForKey:DCTGoogleMapsStatus] isEqualToString:DCTGoogleMapsStatusZeroResults]) {
+		
+		NSError *error = [NSError dct_errorWithDomain:@"DCTGoogleMaps"
+												 code:0
+								 localizedDescription:[NSString stringWithFormat:@"No routes found for directions from %@ to %@", [self origin], [self destination]]];
+		
+		[self receivedError:error];
+		return;
+		
+	} else if ([[dictionary objectForKey:DCTGoogleMapsStatus] isEqualToString:DCTGoogleMapsStatusNotFound]) {
+		
+		NSError *error = [NSError dct_errorWithDomain:@"DCTGoogleMaps"
+												 code:0
+								 localizedDescription:[NSString stringWithFormat:@"No results found for either %@ or %@", [self origin], [self destination]]];
+		
+		[self receivedError:error];
+		return;
+	}
+		
 	
 	NSManagedObjectContext *context = self.managedObjectContext;
 	

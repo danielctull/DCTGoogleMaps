@@ -44,7 +44,7 @@
 		return YES;
 	}
 	
-	if ([key isEqualToString:DCTGoogleMapsAddressComponents]) {
+	/*if ([key isEqualToString:DCTGoogleMapsAddressComponents]) {
 		
 		NSArray *types = [value objectForKey:@"types"];
 		
@@ -55,7 +55,7 @@
 		}
 		
 		return YES;
-	}
+	}*/
 	
 	return [super dct_setSerializedValue:value forKey:key];
 }
