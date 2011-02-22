@@ -24,36 +24,36 @@ NSString *const DCTGoogleMapsStepRelationshipLeg = @"leg";
 
 + (NSDictionary *)dct_mappingFromRemoteNamesToLocalNames {
 	NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-	[dict setValue:DCTGoogleMapsStepAttributeInstructions forKey:DCTGoogleMapsAPIInstructions];
+	[dict setValue:DCTGoogleMapsStepAttributeInstructions forKey:DCTGoogleMapsInstructions];
 	return [dict autorelease];
 }
 
 - (BOOL)dct_setSerializedValue:(id)value forKey:(NSString *)key {
 	
-	if ([key isEqualToString:DCTGoogleMapsAPIDistance]) {
-		self.distanceString = [value objectForKey:DCTGoogleMapsAPIText];
-		self.distance = [value objectForKey:DCTGoogleMapsAPIValue];
+	if ([key isEqualToString:DCTGoogleMapsDistance]) {
+		self.distanceString = [value objectForKey:DCTGoogleMapsText];
+		self.distance = [value objectForKey:DCTGoogleMapsValue];
 		return YES;
 	}
 	
-	if ([key isEqualToString:DCTGoogleMapsAPIDuration]) {
-		self.durationString = [value objectForKey:DCTGoogleMapsAPIText];
-		self.duration = [value objectForKey:DCTGoogleMapsAPIValue];
+	if ([key isEqualToString:DCTGoogleMapsDuration]) {
+		self.durationString = [value objectForKey:DCTGoogleMapsText];
+		self.duration = [value objectForKey:DCTGoogleMapsValue];
 		return YES;
 	}
 	
-	if ([key isEqualToString:DCTGoogleMapsAPIEndLocation]) {
+	if ([key isEqualToString:DCTGoogleMapsEndLocation]) {
 		self.endLocation = [DCTGoogleMapsConnectionController locationFromDictionary:value];
 		return YES;
 	}
 	
-	if ([key isEqualToString:DCTGoogleMapsAPIStartLocation]) {
+	if ([key isEqualToString:DCTGoogleMapsStartLocation]) {
 		self.startLocation = [DCTGoogleMapsConnectionController locationFromDictionary:value];
 		return YES;
 	}
 	
-	if ([key isEqualToString:DCTGoogleMapsAPIPolyline]) {
-		self.polylineString = [value objectForKey:DCTGoogleMapsAPIPoints];
+	if ([key isEqualToString:DCTGoogleMapsPolyline]) {
+		self.polylineString = [value objectForKey:DCTGoogleMapsPoints];
 		return YES;
 	}
 	

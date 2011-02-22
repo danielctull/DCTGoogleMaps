@@ -10,38 +10,40 @@
 #import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>
 
-extern NSString *const DCTGoogleMapsAPIStatus;
-extern NSString *const DCTGoogleMapsAPIStatusOK;
-extern NSString *const DCTGoogleMapsAPIStatusNotFound;
-extern NSString *const DCTGoogleMapsAPIStatusZeroResults;
-extern NSString *const DCTGoogleMapsAPIStatusMaxWaypointsExceeded;
-extern NSString *const DCTGoogleMapsAPIStatusInvalidRequest;
-extern NSString *const DCTGoogleMapsAPIStatusOverQueryLimit;
-extern NSString *const DCTGoogleMapsAPIStatusRequestDenied;
-extern NSString *const DCTGoogleMapsAPIStatusUnknownError;
+extern NSString *const DCTGoogleMapsStatus;
+extern NSString *const DCTGoogleMapsStatusOK;
+extern NSString *const DCTGoogleMapsStatusNotFound;
+extern NSString *const DCTGoogleMapsStatusZeroResults;
+extern NSString *const DCTGoogleMapsStatusMaxWaypointsExceeded;
+extern NSString *const DCTGoogleMapsStatusInvalidRequest;
+extern NSString *const DCTGoogleMapsStatusOverQueryLimit;
+extern NSString *const DCTGoogleMapsStatusRequestDenied;
+extern NSString *const DCTGoogleMapsStatusUnknownError;
 
-extern NSString *const DCTGoogleMapsAPIRoutes;
-extern NSString *const DCTGoogleMapsAPILegs;
-extern NSString *const DCTGoogleMapsAPISteps;
-extern NSString *const DCTGoogleMapsAPIPoints;
-extern NSString *const DCTGoogleMapsAPILevels;
+extern NSString *const DCTGoogleMapsRoutes;
+extern NSString *const DCTGoogleMapsLegs;
+extern NSString *const DCTGoogleMapsSteps;
+extern NSString *const DCTGoogleMapsPoints;
+extern NSString *const DCTGoogleMapsLevels;
 
-extern NSString *const DCTGoogleMapsAPISummary;
+extern NSString *const DCTGoogleMapsSummary;
 
-extern NSString *const DCTGoogleMapsAPICopyrights;
-extern NSString *const DCTGoogleMapsAPIDistance;
-extern NSString *const DCTGoogleMapsAPIDuration;
-extern NSString *const DCTGoogleMapsAPIValue;
-extern NSString *const DCTGoogleMapsAPIText;
-extern NSString *const DCTGoogleMapsAPIPolyline;
-extern NSString *const DCTGoogleMapsAPIOverviewPolyline;
-extern NSString *const DCTGoogleMapsAPILatitude;
-extern NSString *const DCTGoogleMapsAPILongitude;
-extern NSString *const DCTGoogleMapsAPIStartLocation;
-extern NSString *const DCTGoogleMapsAPIEndLocation;
-extern NSString *const DCTGoogleMapsAPIStartAddress;
-extern NSString *const DCTGoogleMapsAPIEndAddress;
-extern NSString *const DCTGoogleMapsAPIInstructions;
+extern NSString *const DCTGoogleMapsCopyrights;
+extern NSString *const DCTGoogleMapsDistance;
+extern NSString *const DCTGoogleMapsDuration;
+extern NSString *const DCTGoogleMapsValue;
+extern NSString *const DCTGoogleMapsText;
+extern NSString *const DCTGoogleMapsPolyline;
+extern NSString *const DCTGoogleMapsOverviewPolyline;
+extern NSString *const DCTGoogleMapsLatitude;
+extern NSString *const DCTGoogleMapsLongitude;
+extern NSString *const DCTGoogleMapsStartLocation;
+extern NSString *const DCTGoogleMapsEndLocation;
+extern NSString *const DCTGoogleMapsStartAddress;
+extern NSString *const DCTGoogleMapsEndAddress;
+extern NSString *const DCTGoogleMapsInstructions;
+
+extern NSString *const DCTGoogleMapsAddressComponents;
 
 @interface DCTGoogleMapsConnectionController : DCTRESTController {}
 

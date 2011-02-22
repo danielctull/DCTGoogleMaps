@@ -13,8 +13,8 @@
 
 - (BOOL)dct_setSerializedValue:(id)value forKey:(NSString *)key {
 	
-	if ([key isEqualToString:DCTGoogleMapsAPIPolyline]) {
-		self.overviewPolylineString = [value objectForKey:DCTGoogleMapsAPIPoints];
+	if ([key isEqualToString:DCTGoogleMapsPolyline]) {
+		self.overviewPolylineString = [value objectForKey:DCTGoogleMapsPoints];
 		return YES;
 	}
 	

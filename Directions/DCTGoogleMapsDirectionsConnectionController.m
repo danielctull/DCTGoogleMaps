@@ -57,7 +57,7 @@
 	NSError *err = nil;
 	NSDictionary *dictionary = [jsonParser objectWithString:jsonString error:&err];
 	
-	if ([[dictionary objectForKey:DCTGoogleMapsAPIStatus] isEqualToString:DCTGoogleMapsAPIStatusZeroResults]) 
+	if ([[dictionary objectForKey:DCTGoogleMapsStatus] isEqualToString:DCTGoogleMapsStatusZeroResults]) 
 		return [super receivedObject:object];
 	
 	NSManagedObjectContext *context = self.managedObjectContext;
@@ -69,8 +69,8 @@
 }
 
 + (CLLocation *)locationFromDictionary:(NSDictionary *)dictionary {
-	NSNumber *latitudeNumber = [dictionary objectForKey:DCTGoogleMapsAPILatitude];
-	NSNumber *longitudeNumber = [dictionary objectForKey:DCTGoogleMapsAPILongitude];
+	NSNumber *latitudeNumber = [dictionary objectForKey:DCTGoogleMapsLatitude];
+	NSNumber *longitudeNumber = [dictionary objectForKey:DCTGoogleMapsLongitude];
 	return [[[CLLocation alloc] initWithLatitude:[latitudeNumber doubleValue] longitude:[longitudeNumber doubleValue]] autorelease];
 }
 

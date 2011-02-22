@@ -34,8 +34,8 @@
 	
 	if ([key isEqualToString:@"geometry"]) {
 		
-		NSNumber *lat = [value objectForKey:@"lat"];
-		NSNumber *lng = [value objectForKey:@"lng"];
+		NSNumber *lat = [value objectForKey:DCTGoogleMapsLatitude];
+		NSNumber *lng = [value objectForKey:DCTGoogleMapsLongitude];
 		
 		CLLocation *l = [[CLLocation alloc] initWithLatitude:[lat doubleValue]
 												   longitude:[lng doubleValue]];
@@ -44,7 +44,7 @@
 		return YES;
 	}
 	
-	if ([key isEqualToString:@"address_components"]) {
+	if ([key isEqualToString:DCTGoogleMapsAddressComponents]) {
 		
 		NSArray *types = [value objectForKey:@"types"];
 		
