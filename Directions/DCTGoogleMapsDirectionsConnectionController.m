@@ -12,42 +12,6 @@
 #import "MKPolyline+DCTGoogleEncoding.h"
 #import "DCTGoogleMapsDirection+Implementation.h"
 
-
-NSString *const DTGoogleDirectionsAPIStatusKey = @"status";
-NSString *const DTGoogleDirectionsAPIStatusOK = @"OK";
-NSString *const DTGoogleDirectionsAPIStatusNotFound = @"NOT_FOUND";
-NSString *const DTGoogleDirectionsAPIStatusZeroResults = @"ZERO_RESULTS";
-NSString *const DTGoogleDirectionsAPIStatusMaxWaypointsExceeded = @"MAX_WAYPOINTS_EXCEEDED";
-NSString *const DTGoogleDirectionsAPIStatusInvalidRequest = @"INVALID_REQUEST";
-NSString *const DTGoogleDirectionsAPIStatusOverQueryLimit = @"OVER_QUERY_LIMIT";
-NSString *const DTGoogleDirectionsAPIStatusRequestDenied = @"REQUEST_DENIED";
-NSString *const DTGoogleDirectionsAPIStatusUnknownError = @"UNKNOWN_ERROR";
-
-
-NSString *const DTGoogleDirectionsAPIRoutesKey = @"routes";
-NSString *const DTGoogleDirectionsAPILegsKey = @"legs";
-NSString *const DTGoogleDirectionsAPIStepsKey = @"steps";
-NSString *const DTGoogleDirectionsAPIPointsKey = @"points";
-NSString *const DTGoogleDirectionsAPILevelsKey = @"levels";
-
-NSString *const DTGoogleDirectionsAPISummaryKey = @"summary";
-
-NSString *const DTGoogleDirectionsAPICopyrightsKey = @"copyrights";
-NSString *const DTGoogleDirectionsAPIDistanceKey = @"distance";
-NSString *const DTGoogleDirectionsAPIDurationKey = @"duration";
-NSString *const DTGoogleDirectionsAPIValueKey = @"value";
-NSString *const DTGoogleDirectionsAPITextKey = @"text";
-NSString *const DTGoogleDirectionsAPIPolylineKey = @"polyline";
-NSString *const DTGoogleDirectionsAPIOverviewPolylineKey = @"overview_polyline";
-NSString *const DTGoogleDirectionsAPILatitudeKey = @"lat";
-NSString *const DTGoogleDirectionsAPILongitudeKey = @"lng";
-NSString *const DTGoogleDirectionsAPIStartLocationKey = @"start_location";
-NSString *const DTGoogleDirectionsAPIEndLocationKey = @"end_location";
-NSString *const DTGoogleDirectionsAPIStartAddressKey = @"start_address";
-NSString *const DTGoogleDirectionsAPIEndAddressKey = @"end_address";
-
-NSString *const DTGoogleDirectionsAPIInstructionsKey = @"html_instructions";
-
 @implementation DCTGoogleMapsDirectionsConnectionController
 @synthesize startString, endString, startLocation, endLocation;
 
@@ -93,7 +57,7 @@ NSString *const DTGoogleDirectionsAPIInstructionsKey = @"html_instructions";
 	NSError *err = nil;
 	NSDictionary *dictionary = [jsonParser objectWithString:jsonString error:&err];
 	
-	if ([[dictionary objectForKey:DTGoogleDirectionsAPIStatusKey] isEqualToString:@"ZERO_RESULTS"]) 
+	if ([[dictionary objectForKey:DCTGoogleMapsAPIStatus] isEqualToString:DCTGoogleMapsAPIStatusZeroResults]) 
 		return [super receivedObject:object];
 	
 	NSManagedObjectContext *context = self.managedObjectContext;
@@ -105,8 +69,8 @@ NSString *const DTGoogleDirectionsAPIInstructionsKey = @"html_instructions";
 }
 
 + (CLLocation *)locationFromDictionary:(NSDictionary *)dictionary {
-	NSNumber *latitudeNumber = [dictionary objectForKey:DTGoogleDirectionsAPILatitudeKey];
-	NSNumber *longitudeNumber = [dictionary objectForKey:DTGoogleDirectionsAPILongitudeKey];
+	NSNumber *latitudeNumber = [dictionary objectForKey:DCTGoogleMapsAPILatitude];
+	NSNumber *longitudeNumber = [dictionary objectForKey:DCTGoogleMapsAPILongitude];
 	return [[[CLLocation alloc] initWithLatitude:[latitudeNumber doubleValue] longitude:[longitudeNumber doubleValue]] autorelease];
 }
 

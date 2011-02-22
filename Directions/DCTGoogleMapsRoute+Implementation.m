@@ -7,8 +7,18 @@
 //
 
 #import "DCTGoogleMapsRoute+Implementation.h"
-
+#import "DCTGoogleMapsConnectionController.h"
 
 @implementation DCTGoogleMapsRoute (Implementation)
+
+- (BOOL)dct_setSerializedValue:(id)value forKey:(NSString *)key {
+	
+	if ([key isEqualToString:DCTGoogleMapsAPIPolyline]) {
+		self.overviewPolylineString = [value objectForKey:DCTGoogleMapsAPIPoints];
+		return YES;
+	}
+	
+	return [super dct_setSerializedValue:value forKey:key];
+}
 
 @end
