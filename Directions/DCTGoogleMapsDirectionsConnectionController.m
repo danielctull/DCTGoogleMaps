@@ -10,7 +10,7 @@
 #import "NSString+DCTURLEncoding.h"
 #import "JSON.h"
 #import "MKPolyline+DCTGoogleEncoding.h"
-#import "DCTGoogleMapsDirection.h"
+#import "DCTGoogleMapsDirection+Implementation.h"
 
 
 NSString *const DTGoogleDirectionsAPIStatusKey = @"status";

@@ -74,6 +74,10 @@
 		2464EF211311DAC00050B13C /* MKPolyline+DCTGoogleEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2464EF201311DAC00050B13C /* MKPolyline+DCTGoogleEncoding.m */; };
 		2464EF231311DAFC0050B13C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2464EF221311DAFC0050B13C /* MapKit.framework */; };
 		2464EF251311DB9F0050B13C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2464EF241311DB9F0050B13C /* CoreLocation.framework */; };
+		2490F5381313A842003466CC /* DCTGoogleMapsDirection+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2490F5371313A842003466CC /* DCTGoogleMapsDirection+Implementation.m */; };
+		2490F53C1313A879003466CC /* DCTGoogleMapsRoute+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2490F53B1313A878003466CC /* DCTGoogleMapsRoute+Implementation.m */; };
+		2490F53F1313A8A4003466CC /* DCTGoogleMapsStep+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2490F53E1313A8A4003466CC /* DCTGoogleMapsStep+Implementation.m */; };
+		2490F5421313A8E9003466CC /* DCTGoogleMapsLeg+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2490F5411313A8E9003466CC /* DCTGoogleMapsLeg+Implementation.m */; };
 		249CA5BE131309A4001DF84B /* DCTGoogleMapsDirectionsConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 249CA5BD131309A4001DF84B /* DCTGoogleMapsDirectionsConnectionController.m */; };
 		249CA5C213130CEE001DF84B /* DCTGoogleMapsConnectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 249CA5C113130CED001DF84B /* DCTGoogleMapsConnectionController.m */; };
 /* End PBXBuildFile section */
@@ -207,6 +211,14 @@
 		2464EF201311DAC00050B13C /* MKPolyline+DCTGoogleEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPolyline+DCTGoogleEncoding.m"; sourceTree = "<group>"; };
 		2464EF221311DAFC0050B13C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2464EF241311DB9F0050B13C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2490F5361313A842003466CC /* DCTGoogleMapsDirection+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DCTGoogleMapsDirection+Implementation.h"; sourceTree = "<group>"; };
+		2490F5371313A842003466CC /* DCTGoogleMapsDirection+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DCTGoogleMapsDirection+Implementation.m"; sourceTree = "<group>"; };
+		2490F53A1313A878003466CC /* DCTGoogleMapsRoute+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DCTGoogleMapsRoute+Implementation.h"; sourceTree = "<group>"; };
+		2490F53B1313A878003466CC /* DCTGoogleMapsRoute+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DCTGoogleMapsRoute+Implementation.m"; sourceTree = "<group>"; };
+		2490F53D1313A8A4003466CC /* DCTGoogleMapsStep+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DCTGoogleMapsStep+Implementation.h"; sourceTree = "<group>"; };
+		2490F53E1313A8A4003466CC /* DCTGoogleMapsStep+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DCTGoogleMapsStep+Implementation.m"; sourceTree = "<group>"; };
+		2490F5401313A8E8003466CC /* DCTGoogleMapsLeg+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DCTGoogleMapsLeg+Implementation.h"; sourceTree = "<group>"; };
+		2490F5411313A8E9003466CC /* DCTGoogleMapsLeg+Implementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DCTGoogleMapsLeg+Implementation.m"; sourceTree = "<group>"; };
 		249CA5BC131309A4001DF84B /* DCTGoogleMapsDirectionsConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTGoogleMapsDirectionsConnectionController.h; sourceTree = "<group>"; };
 		249CA5BD131309A4001DF84B /* DCTGoogleMapsDirectionsConnectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTGoogleMapsDirectionsConnectionController.m; sourceTree = "<group>"; };
 		249CA5C013130CEC001DF84B /* DCTGoogleMapsConnectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTGoogleMapsConnectionController.h; sourceTree = "<group>"; };
@@ -243,6 +255,14 @@
 				2430F30A13125ECE001977C8 /* DCTGoogleMapsDirection.m */,
 				2430F30613125ECE001977C8 /* DCTGoogleMapsStep.h */,
 				2430F30713125ECE001977C8 /* DCTGoogleMapsStep.m */,
+				2490F5361313A842003466CC /* DCTGoogleMapsDirection+Implementation.h */,
+				2490F5371313A842003466CC /* DCTGoogleMapsDirection+Implementation.m */,
+				2490F53A1313A878003466CC /* DCTGoogleMapsRoute+Implementation.h */,
+				2490F53B1313A878003466CC /* DCTGoogleMapsRoute+Implementation.m */,
+				2490F53D1313A8A4003466CC /* DCTGoogleMapsStep+Implementation.h */,
+				2490F53E1313A8A4003466CC /* DCTGoogleMapsStep+Implementation.m */,
+				2490F5401313A8E8003466CC /* DCTGoogleMapsLeg+Implementation.h */,
+				2490F5411313A8E9003466CC /* DCTGoogleMapsLeg+Implementation.m */,
 			);
 			path = Directions;
 			sourceTree = "<group>";
@@ -625,6 +645,10 @@
 				2430F3791312721A001977C8 /* SBJsonWriter.m in Sources */,
 				249CA5BE131309A4001DF84B /* DCTGoogleMapsDirectionsConnectionController.m in Sources */,
 				249CA5C213130CEE001DF84B /* DCTGoogleMapsConnectionController.m in Sources */,
+				2490F5381313A842003466CC /* DCTGoogleMapsDirection+Implementation.m in Sources */,
+				2490F53C1313A879003466CC /* DCTGoogleMapsRoute+Implementation.m in Sources */,
+				2490F53F1313A8A4003466CC /* DCTGoogleMapsStep+Implementation.m in Sources */,
+				2490F5421313A8E9003466CC /* DCTGoogleMapsLeg+Implementation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
