@@ -8,6 +8,7 @@
 
 #import "DCTGoogleMapsPlace+Implementation.h"
 #import "DCTGoogleMapsGeocodingConnectionController.h"
+#import "DCTGoogleMapsDirectionsConnectionController.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface DCTGoogleMapsPlace ()
@@ -16,16 +17,22 @@
 
 @implementation DCTGoogleMapsPlace (Implementation)
 
-
-
 - (NSString *)address {
 	return [NSString stringWithFormat:@"%@, %@", self.postcode, self.country];
 }
 
-- (void)dctInternal_geocode {
+- (void)downloadGeocodeInformation {
 	DCTGoogleMapsGeocodingConnectionController *cc = [DCTGoogleMapsGeocodingConnectionController connectionController];
 	cc.location = self.location;
 	cc.address = self.address;
+	cc.managedObjectContext = [self managedObjectContext];
+	[cc connect];
+}
+
+- (void)downloadDirectionsToPlace:(DCTGoogleMapsPlace *)place {
+	DCTGoogleMapsDirectionsConnectionController *cc = [DCTGoogleMapsDirectionsConnectionController connectionController];
+	cc.startPlace = self;
+	cc.endPlace = place;
 	cc.managedObjectContext = [self managedObjectContext];
 	[cc connect];
 }

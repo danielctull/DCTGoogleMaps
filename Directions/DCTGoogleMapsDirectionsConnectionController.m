@@ -20,9 +20,11 @@
 
 
 @implementation DCTGoogleMapsDirectionsConnectionController
-@synthesize startString, endString, startLocation, endLocation;
+@synthesize startString, endString, startLocation, endLocation, startPlace, endPlace;
 
 - (void)dealloc {
+	[startPlace release], startPlace = nil;
+	[endPlace release], endPlace = nil;
 	[startLocation release], startLocation = nil;
 	[endLocation release], endLocation = nil;
 	[startString release], startString = nil;
@@ -39,6 +41,7 @@
 }
 
 - (NSString *)origin {
+	
 	if (self.startLocation)
 		return [NSString stringWithFormat:@"%f,%f", self.startLocation.coordinate.latitude, self.startLocation.coordinate.longitude];
 	
@@ -46,10 +49,25 @@
 }
 
 - (NSString *)destination {
+	
 	if (self.endLocation)
 		return [NSString stringWithFormat:@"%f,%f", self.endLocation.coordinate.latitude, self.endLocation.coordinate.longitude];
 	
 	return self.endString;
+}
+
+- (CLLocation *)startLocation {
+	
+	if (self.startPlace) self.startLocation = self.startPlace.location;
+	
+	return startLocation;
+}
+
+- (CLLocation *)endLocation {
+	
+	if (self.endPlace) self.endLocation = self.endPlace.location;
+	
+	return endLocation;
 }
 
 - (void)receivedObject:(NSObject *)object {
@@ -95,6 +113,9 @@
 	
 	DCTGoogleMapsDirection *direction = [DCTGoogleMapsDirection dct_objectFromDictionary:dictionary 
 														  insertIntoManagedObjectContext:context];
+	
+	direction.startPlace = self.startPlace;
+	direction.endPlace = self.endPlace;
 	
 	[super receivedObject:direction];
 }

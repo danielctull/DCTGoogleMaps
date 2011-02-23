@@ -11,4 +11,8 @@
 
 @interface DCTGoogleMapsPlace (Implementation) <DCTManagedObjectAutomatedSetup>
 @property (nonatomic, readonly) NSString *address;
+
+- (void)downloadGeocodeInformation;
+- (void)downloadDirectionsToPlace:(DCTGoogleMapsPlace *)place;
+
 @end

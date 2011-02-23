@@ -8,6 +8,7 @@
 
 #import "DCTGoogleMapsConnectionController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "DCTGoogleMapsPlace.h"
 
 extern NSString *const DTGoogleDirectionsAPIStatusKey;
 extern NSString *const DTGoogleDirectionsAPIStatusOK;
@@ -47,6 +48,7 @@ extern NSString *const DTGoogleDirectionsAPIInstructionsKey;
 
 @property (nonatomic, copy) NSString *startString, *endString;
 @property (nonatomic, retain) CLLocation *startLocation, *endLocation;
+@property (nonatomic, retain) DCTGoogleMapsPlace *startPlace, *endPlace;
 
 + (CLLocation *)locationFromDictionary:(NSDictionary *)dictionary;
 

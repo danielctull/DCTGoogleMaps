@@ -2,11 +2,13 @@
 //  DCTGoogleMapsDirection.m
 //  DCTGoogleMaps
 //
-//  Created by Daniel Tull on 21.02.2011.
+//  Created by Daniel Tull on 23.02.2011.
 //  Copyright (c) 2011 Daniel Tull. All rights reserved.
 //
 
 #import "DCTGoogleMapsDirection.h"
+#import "DCTGoogleMapsPlace.h"
+#import "DCTGoogleMapsRoute.h"
 
 
 @implementation DCTGoogleMapsDirection
@@ -15,8 +17,10 @@
 @dynamic endString;
 @dynamic startString;
 @dynamic routes;
+@dynamic startPlace;
+@dynamic endPlace;
 
-- (void)addRoutesObject:(NSManagedObject *)value {    
+- (void)addRoutesObject:(DCTGoogleMapsRoute *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"routes" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"routes"] addObject:value];
@@ -24,7 +28,7 @@
     [changedObjects release];
 }
 
-- (void)removeRoutesObject:(NSManagedObject *)value {
+- (void)removeRoutesObject:(DCTGoogleMapsRoute *)value {
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"routes" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"routes"] removeObject:value];
@@ -43,6 +47,8 @@
     [[self primitiveValueForKey:@"routes"] minusSet:value];
     [self didChangeValueForKey:@"routes" withSetMutation:NSKeyValueMinusSetMutation usingObjects:value];
 }
+
+
 
 
 @end
