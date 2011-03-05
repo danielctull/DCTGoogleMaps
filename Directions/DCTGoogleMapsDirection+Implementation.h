@@ -9,6 +9,12 @@
 #import "DCTGoogleMapsDirection.h"
 #import "NSManagedObject+DCTAutomatedSetup.h"
 
+typedef void (^DCTGoogleMapsDirectionBlock) (DCTGoogleMapsDirection *direction);
+
 @interface DCTGoogleMapsDirection (Implementation) <DCTManagedObjectAutomatedSetup>
+
++ (void)directionFromPlace:(DCTGoogleMapsPlace *)fromPlace
+				   toPlace:(DCTGoogleMapsPlace *)toPlace
+			directionBlock:(DCTGoogleMapsDirectionBlock)block;
 
 @end

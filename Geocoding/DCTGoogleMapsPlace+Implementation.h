@@ -8,11 +8,20 @@
 
 #import "DCTGoogleMapsPlace.h"
 #import "NSManagedObject+DCTAutomatedSetup.h"
+#import "DCTGoogleMapsDirection+Implementation.h"
+
+typedef void (^DCTGoogleMapsGeocodeBlock) ();
 
 @interface DCTGoogleMapsPlace (Implementation) <DCTManagedObjectAutomatedSetup>
+
 @property (nonatomic, readonly) NSString *address;
 
-- (void)downloadGeocodeInformation;
-- (void)downloadDirectionsToPlace:(DCTGoogleMapsPlace *)place;
+- (void)geocode:(DCTGoogleMapsGeocodeBlock)block;
+
+- (void)directionToPlace:(DCTGoogleMapsPlace *)place
+		  directionBlock:(DCTGoogleMapsDirectionBlock)block;
+
+- (void)directionFromPlace:(DCTGoogleMapsPlace *)place
+			directionBlock:(DCTGoogleMapsDirectionBlock)block;
 
 @end

@@ -21,20 +21,33 @@
 	return [NSString stringWithFormat:@"%@, %@", self.postcode, self.country];
 }
 
-- (void)downloadGeocodeInformation {
+- (void)geocode:(DCTGoogleMapsGeocodeBlock)block {
 	DCTGoogleMapsGeocodingConnectionController *cc = [DCTGoogleMapsGeocodingConnectionController connectionController];
 	cc.location = self.location;
 	cc.address = self.address;
 	cc.managedObjectContext = [self managedObjectContext];
+	
+	[cc addCompletionBlock:^(NSObject *object) {
+		block();
+	}];
+	
 	[cc connect];
 }
 
-- (void)downloadDirectionsToPlace:(DCTGoogleMapsPlace *)place {
-	DCTGoogleMapsDirectionsConnectionController *cc = [DCTGoogleMapsDirectionsConnectionController connectionController];
-	cc.startPlace = self;
-	cc.endPlace = place;
-	cc.managedObjectContext = [self managedObjectContext];
-	[cc connect];
+- (void)directionToPlace:(DCTGoogleMapsPlace *)place
+		  directionBlock:(DCTGoogleMapsDirectionBlock)block {
+	
+	[DCTGoogleMapsDirection directionFromPlace:self
+									   toPlace:place
+								directionBlock:block];
+}
+
+- (void)directionFromPlace:(DCTGoogleMapsPlace *)place
+			directionBlock:(DCTGoogleMapsDirectionBlock)block {
+	
+	[DCTGoogleMapsDirection directionFromPlace:place
+									   toPlace:self
+								directionBlock:block];
 }
 
 - (BOOL)dct_setSerializedValue:(id)value forKey:(NSString *)key {
