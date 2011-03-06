@@ -12,6 +12,7 @@
 #import "MKPolyline+DCTGoogleEncoding.h"
 #import "DCTGoogleMapsDirection+Implementation.h"
 #import "NSError+DCTExtensions.h"
+#import "NSManagedObjectContext+DCTDataFetching.h"
 
 @interface DCTGoogleMapsDirectionsConnectionController ()
 @property (nonatomic, readonly) NSString *origin;
@@ -20,15 +21,13 @@
 
 
 @implementation DCTGoogleMapsDirectionsConnectionController
-@synthesize startString, endString, startLocation, endLocation, startPlace, endPlace;
+@synthesize startSearch, endSearch, startPlace, endPlace;
 
 - (void)dealloc {
 	[startPlace release], startPlace = nil;
 	[endPlace release], endPlace = nil;
-	[startLocation release], startLocation = nil;
-	[endLocation release], endLocation = nil;
-	[startString release], startString = nil;
-	[endString release], endString = nil;
+	[startSearch release], startSearch = nil;
+	[endSearch release], endSearch = nil;
 	[super dealloc];
 }
 
@@ -42,32 +41,32 @@
 
 - (NSString *)origin {
 	
-	if (self.startLocation)
-		return [NSString stringWithFormat:@"%f,%f", self.startLocation.coordinate.latitude, self.startLocation.coordinate.longitude];
+	if ((self.startPlace)) {
+		CLLocationCoordinate2D coordinate = self.startPlace.location.coordinate;
+		return [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+	}
 	
-	return self.startString;
+	if (!(self.startSearch.place)) {
+		DCTGoogleMapsPlace *place = [self.managedObjectContext dct_insertNewObjectForEntityName:@"DCTGoogleMapsPlace"];
+		self.startSearch.place = place;
+	}
+	
+	return self.startSearch.searchString;
 }
 
 - (NSString *)destination {
 	
-	if (self.endLocation)
-		return [NSString stringWithFormat:@"%f,%f", self.endLocation.coordinate.latitude, self.endLocation.coordinate.longitude];
+	if ((self.endPlace)) {
+		CLLocationCoordinate2D coordinate = self.endPlace.location.coordinate;
+		return [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude];
+	}
 	
-	return self.endString;
-}
-
-- (CLLocation *)startLocation {
+	if (!(self.endSearch.place)) {
+		DCTGoogleMapsPlace *place = [self.managedObjectContext dct_insertNewObjectForEntityName:@"DCTGoogleMapsPlace"];
+		self.endSearch.place = place;
+	}
 	
-	if (self.startPlace) self.startLocation = self.startPlace.location;
-	
-	return startLocation;
-}
-
-- (CLLocation *)endLocation {
-	
-	if (self.endPlace) self.endLocation = self.endPlace.location;
-	
-	return endLocation;
+	return self.endSearch.searchString;
 }
 
 - (void)receivedObject:(NSObject *)object {
@@ -114,8 +113,17 @@
 	DCTGoogleMapsDirection *direction = [DCTGoogleMapsDirection dct_objectFromDictionary:dictionary 
 														  insertIntoManagedObjectContext:context];
 	
-	direction.startPlace = self.startPlace;
-	direction.endPlace = self.endPlace;
+	
+	if ((self.startPlace))
+		direction.startPlace = self.startPlace;
+	else
+		direction.startPlace = self.startSearch.place;
+	
+	
+	if ((self.endPlace))
+		direction.endPlace = self.endPlace;
+	else
+		direction.endPlace = self.endSearch.place;
 	
 	[super receivedObject:direction];
 }

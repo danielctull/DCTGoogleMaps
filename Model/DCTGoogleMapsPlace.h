@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <CoreLocation/CoreLocation.h>
 
 @class DCTGoogleMapsDirection, DCTGoogleMapsLeg, DCTGoogleMapsSearch;
 
 @interface DCTGoogleMapsPlace : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) id location;
+@property (nonatomic, retain) CLLocation *location;
 @property (nonatomic, retain) NSString * country;
 @property (nonatomic, retain) NSString * postcode;
 @property (nonatomic, retain) DCTGoogleMapsDirection * endOfDirections;

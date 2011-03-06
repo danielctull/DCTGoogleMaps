@@ -17,22 +17,19 @@
 #import "DCTGoogleMapsLeg.h"
 #import "DCTGoogleMapsRoute.h"
 #import "DCTGoogleMapsPlace.h"
-
-@interface DCTGoogleMapsAppDelegate ()
-@property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
-@end
+#import "NSManagedObjectContext+DCTGoogleMaps.h"
 
 @implementation DCTGoogleMapsAppDelegate
-
-
-@synthesize window=_window;
+@synthesize window, managedObjectContext;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+	NSManagedObjectContext *moc = self.managedObjectContext;
+	
 	DCTGoogleMapsDirectionsConnectionController *cc = [DCTGoogleMapsDirectionsConnectionController connectionController];
-	cc.managedObjectContext = self.managedObjectContext;
-	cc.startString = @"W1N";
-	cc.endString = @"F4IL";
+	cc.managedObjectContext = moc;
+	cc.startSearch = [moc dct_googleMapsSearchWithString:@"PO22 9HZ"];
+	cc.endSearch = [moc dct_googleMapsSearchWithString:@"GU1 2AR"];
 	
 	[cc addCompletionBlock:^ (NSObject *object) {
 		
@@ -124,28 +121,31 @@
 	 */
 }
 
-- (void)dealloc
-{
-	[_window release];
+- (void)dealloc {
+	[window release], window = nil;
+	[managedObjectContext release], managedObjectContext = nil;
     [super dealloc];
 }
 
 - (NSManagedObjectContext *)managedObjectContext {
 	
-	NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles: nil];
-	NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
+	if ((!managedObjectContext)) {
+		
+		NSManagedObjectModel *managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+		NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
+		
+		[persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType
+												 configuration:nil
+														   URL:nil
+													   options:nil 
+														 error:NULL];
+		
+		managedObjectContext = [[NSManagedObjectContext alloc] init];
+		[managedObjectContext setPersistentStoreCoordinator:persistentStoreCoordinator];
+		[persistentStoreCoordinator release];
+	}
 	
-    [persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType
-											 configuration:nil
-													   URL:nil
-												   options:nil 
-													 error:NULL];
-	
-	NSManagedObjectContext *managedObjectContext = [[NSManagedObjectContext alloc] init];
-    [managedObjectContext setPersistentStoreCoordinator:persistentStoreCoordinator];
-	[persistentStoreCoordinator release];
-	
-	return [managedObjectContext autorelease];	
+	return [[managedObjectContext retain] autorelease];
 }
 
 @end
