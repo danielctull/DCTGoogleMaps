@@ -11,10 +11,6 @@
 #import "DCTGoogleMapsDirectionsConnectionController.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface DCTGoogleMapsPlace ()
-- (void)dctInternal_geocode;
-@end
-
 @implementation DCTGoogleMapsPlace (Implementation)
 
 - (NSString *)address {

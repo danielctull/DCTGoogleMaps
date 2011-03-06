@@ -11,5 +11,4 @@
 #import "NSManagedObject+DCTOrdering.h"
 
 @interface DCTGoogleMapsLeg (Implementation) <DCTManagedObjectAutomatedSetup, DCTOrderedObject>
-
 @end

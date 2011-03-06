@@ -2,14 +2,14 @@
 //  DCTGoogleMapsRoute.h
 //  DCTGoogleMaps
 //
-//  Created by Daniel Tull on 21.02.2011.
+//  Created by Daniel Tull on 06.03.2011.
 //  Copyright (c) 2011 Daniel Tull. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class DCTGoogleMapsDirection;
+@class DCTGoogleMapsDirection, DCTGoogleMapsLeg;
 
 @interface DCTGoogleMapsRoute : NSManagedObject {
 @private

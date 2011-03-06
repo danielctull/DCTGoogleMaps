@@ -2,12 +2,13 @@
 //  DCTGoogleMapsRoute.m
 //  DCTGoogleMaps
 //
-//  Created by Daniel Tull on 21.02.2011.
+//  Created by Daniel Tull on 06.03.2011.
 //  Copyright (c) 2011 Daniel Tull. All rights reserved.
 //
 
 #import "DCTGoogleMapsRoute.h"
 #import "DCTGoogleMapsDirection.h"
+#import "DCTGoogleMapsLeg.h"
 
 
 @implementation DCTGoogleMapsRoute
@@ -18,7 +19,7 @@
 @dynamic legs;
 
 
-- (void)addLegsObject:(NSManagedObject *)value {    
+- (void)addLegsObject:(DCTGoogleMapsLeg *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"legs" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"legs"] addObject:value];
@@ -26,7 +27,7 @@
     [changedObjects release];
 }
 
-- (void)removeLegsObject:(NSManagedObject *)value {
+- (void)removeLegsObject:(DCTGoogleMapsLeg *)value {
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
     [self willChangeValueForKey:@"legs" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"legs"] removeObject:value];

@@ -2,7 +2,7 @@
 //  DCTGoogleMapsDirection.h
 //  DCTGoogleMaps
 //
-//  Created by Daniel Tull on 23.02.2011.
+//  Created by Daniel Tull on 06.03.2011.
 //  Copyright (c) 2011 Daniel Tull. All rights reserved.
 //
 
@@ -14,12 +14,8 @@
 @interface DCTGoogleMapsDirection : NSManagedObject {
 @private
 }
-@property (nonatomic, retain) id startLocation;
-@property (nonatomic, retain) id endLocation;
-@property (nonatomic, retain) NSString * endString;
-@property (nonatomic, retain) NSString * startString;
 @property (nonatomic, retain) NSSet* routes;
-@property (nonatomic, retain) DCTGoogleMapsPlace * startPlace;
 @property (nonatomic, retain) DCTGoogleMapsPlace * endPlace;
+@property (nonatomic, retain) DCTGoogleMapsPlace * startPlace;
 
 @end

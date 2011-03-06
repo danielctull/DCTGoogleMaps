@@ -2,24 +2,25 @@
 //  DCTGoogleMapsPlace.h
 //  DCTGoogleMaps
 //
-//  Created by Daniel Tull on 23.02.2011.
+//  Created by Daniel Tull on 06.03.2011.
 //  Copyright (c) 2011 Daniel Tull. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class DCTGoogleMapsDirection, DCTGoogleMapsLeg;
+@class DCTGoogleMapsDirection, DCTGoogleMapsLeg, DCTGoogleMapsSearch;
 
 @interface DCTGoogleMapsPlace : NSManagedObject {
 @private
 }
+@property (nonatomic, retain) id location;
 @property (nonatomic, retain) NSString * country;
 @property (nonatomic, retain) NSString * postcode;
-@property (nonatomic, retain) id location;
+@property (nonatomic, retain) DCTGoogleMapsDirection * endOfDirections;
+@property (nonatomic, retain) DCTGoogleMapsDirection * startOfDirections;
 @property (nonatomic, retain) DCTGoogleMapsLeg * startOfLegs;
 @property (nonatomic, retain) DCTGoogleMapsLeg * endOfLegs;
-@property (nonatomic, retain) DCTGoogleMapsDirection * directionEnds;
-@property (nonatomic, retain) DCTGoogleMapsDirection * directionStarts;
+@property (nonatomic, retain) NSSet* searches;
 
 @end

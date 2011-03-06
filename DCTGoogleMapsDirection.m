@@ -2,7 +2,7 @@
 //  DCTGoogleMapsDirection.m
 //  DCTGoogleMaps
 //
-//  Created by Daniel Tull on 23.02.2011.
+//  Created by Daniel Tull on 06.03.2011.
 //  Copyright (c) 2011 Daniel Tull. All rights reserved.
 //
 
@@ -12,13 +12,9 @@
 
 
 @implementation DCTGoogleMapsDirection
-@dynamic startLocation;
-@dynamic endLocation;
-@dynamic endString;
-@dynamic startString;
 @dynamic routes;
-@dynamic startPlace;
 @dynamic endPlace;
+@dynamic startPlace;
 
 - (void)addRoutesObject:(DCTGoogleMapsRoute *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
